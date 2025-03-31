@@ -27,7 +27,7 @@ public class PersonaRepositoryMemoria implements PersonaRepository {
 
 	@Override
 	public void insertar(Persona persona) {
-		// TODO Auto-generated method stub
+		lista.add(persona);
 		
 	}
 

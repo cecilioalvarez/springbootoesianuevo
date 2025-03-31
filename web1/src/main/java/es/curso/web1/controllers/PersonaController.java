@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import es.curso.web1.modelo.Persona;
@@ -33,6 +34,22 @@ public class PersonaController {
 		
 		modelo.addAttribute("listapersonas",personaRepository.buscarTodos());
 		return "listapersonas";
+	}
+
+	
+	@GetMapping("/formularionuevo")
+	public String formularioNuevo() {
+	
+		return "formularionuevo";
+	}
+
+	
+	@PostMapping("/insertar")
+	public String insertar(Persona persona) {
+		
+		personaRepository.insertar(persona);
+		
+		return "redirect:/personas/lista";
 	}
 
 }

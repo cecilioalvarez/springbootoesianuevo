@@ -1,16 +1,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
-	<ul>
-	<li th:each="persona: ${listapersonas}">
-	<span th:text="${persona.nombre}"></span>
-	<span th:text="${persona.apellidos}"></span>
-	</li>
+	<table>
+	<tr th:each="persona: ${listapersonas}">
+	<td th:text="${persona.nombre}"></td>
+	<td th:text="${persona.apellidos}"></td>
+	<td th:text="${persona.edad}"></td>
+	</tr>
+	</table>
 
-
-
-	</ul>
-
+<a href="/personas/formularionuevo">ir a nuevo </a>
 
 </body>
 </html>
