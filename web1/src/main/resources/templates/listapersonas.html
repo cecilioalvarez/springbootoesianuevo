@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<ul>
+	<li th:each="persona: ${listapersonas}">
+	<span th:text="${persona.nombre}"></span>
+	<span th:text="${persona.apellidos}"></span>
+	</li>
+
+
+
+	</ul>
+
+
+</body>
+</html>

@@ -1,5 +1,12 @@
-<html>
+<html  xmlns:th="http://www.thymeleaf.org">
 <body>
-hola soy una plantilla
+
+La persona tiene los siguientes Datos:
+
+<p th:text="${persona.nombre}"></p>
+<p  th:text="${persona.apellidos}"></p>
+<p  th:text="${persona.edad}"></p>
+
+
 </body>
 </html>
