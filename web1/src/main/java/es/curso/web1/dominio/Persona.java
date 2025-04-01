@@ -1,5 +1,7 @@
-package es.curso.web1.modelo;
+package es.curso.web1.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Persona {
@@ -7,6 +9,7 @@ public class Persona {
 	private String nombre;
 	private String apellidos;
 	private int edad;
+	List<Examen> examenes= new ArrayList<Examen>();
 	public String getNombre() {
 		return nombre;
 	}
@@ -31,6 +34,15 @@ public class Persona {
 		this.apellidos = apellidos;
 		this.edad = edad;
 	}
+
+
+	public Persona() {
+		super();
+	}
+	public Persona(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(nombre);
@@ -47,5 +59,17 @@ public class Persona {
 		return Objects.equals(nombre, other.nombre);
 	}
 	
+	public List<Examen> getExamenes() {
+		return examenes;
+	}
+	public void setExamenes(List<Examen> examenes) {
+		this.examenes = examenes;
+	}
+	public void addExamen (Examen examen) {
+		this.examenes.add(examen);
+	}
+	public void removeExamen (Examen examen) {
+		this.examenes.remove(examen);
+	}
 	
 }

@@ -1,14 +1,19 @@
 package es.curso.web1.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import es.curso.web1.modelo.Persona;
+import es.curso.web1.dominio.Examen;
+import es.curso.web1.dominio.Persona;
 import es.curso.web1.repositories.PersonaRepository;
+import es.curso.web1.services.PersonaService;
 
 //cuando vayamos a la url /personas accedemos a esta clase
 
@@ -17,7 +22,7 @@ import es.curso.web1.repositories.PersonaRepository;
 public class PersonaController {
 
 	@Autowired
-	private PersonaRepository personaRepository;
+	private PersonaService personaService;
 	
 	
 	@GetMapping("/hola")
@@ -32,7 +37,7 @@ public class PersonaController {
 	@GetMapping("/lista")
 	public String listaPersonas(Model modelo) {
 		
-		modelo.addAttribute("listapersonas",personaRepository.buscarTodos());
+		modelo.addAttribute("listapersonas",personaService.buscarTodosPersona());
 		return "listapersonas";
 	}
 
@@ -47,9 +52,26 @@ public class PersonaController {
 	@PostMapping("/insertar")
 	public String insertar(Persona persona) {
 		
-		personaRepository.insertar(persona);
+		personaService.insertarPersona(persona);
 		
 		return "redirect:/personas/lista";
+	}
+	
+	@GetMapping("/borrar")  
+	public String borrar(@RequestParam String nombre) {
+		
+		personaService.borrarPersona(new Persona(nombre));
+		
+		return "redirect:/personas/lista";
+	}
+	
+	@GetMapping("/listaexamenes")  
+	public String listaExamenes(Model modelo,@RequestParam String nombre) {
+		
+		List<Examen> listaExamenes=personaService.buscarTodosExamenes(new Persona(nombre));
+		modelo.addAttribute("listaexamenes",listaExamenes);
+		
+		return "listaexamenespersona";
 	}
 
 }

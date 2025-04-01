@@ -1,33 +1,39 @@
 package es.curso.web1.repositories.memoria;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import es.curso.web1.modelo.Persona;
+import es.curso.web1.dominio.Persona;
+import es.curso.web1.infraestructura.GestorAlmacen;
 import es.curso.web1.repositories.PersonaRepository;
 @Component
 public class PersonaRepositoryMemoria implements PersonaRepository {
 
-	List<Persona> lista= new ArrayList<Persona>();
+	@Autowired
+	GestorAlmacen gestorAlmacen;
 	
 	public PersonaRepositoryMemoria() {
 		super();
 		
-		lista.add(new Persona("juan","gomez",40));
-		lista.add(new Persona("ana","perez",50));
 	}
 
 	@Override
 	public List<Persona> buscarTodos() {
 		// TODO Auto-generated method stub
-		return lista;
+		return gestorAlmacen.getLista();
 	}
 
 	@Override
 	public void insertar(Persona persona) {
-		lista.add(persona);
+		gestorAlmacen.addPersona(persona);
+		
+	}
+
+	@Override
+	public void borrar(Persona persona) {
+		gestorAlmacen.removePersona(persona);
 		
 	}
 

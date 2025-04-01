@@ -1,0 +1,28 @@
+<html>
+<body>
+filtrar examenes persona
+<form action="/personas/listaexamenes">
+<input type="text" name="nombre"/>
+<input type="submit" value="filtrar"/>
+
+
+</form>
+
+
+	<table>
+	<thead>
+		<th>Id</th>
+		<th>Asignatura</th>
+	
+	</thead>
+	<tbody>
+	<tr th:each="examen: ${listaexamenes}">
+	<td th:text="${examen.id}"></td>
+	<td th:text="${examen.asignatura}"></td>
+	
+	</tr>
+	</tbody>
+	</table>
+</body>
+
+</html>

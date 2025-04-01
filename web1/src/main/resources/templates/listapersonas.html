@@ -2,11 +2,20 @@
 <body>
 
 	<table>
+	<thead>
+		<th>Nombre</th>
+		<th>apellidos</th>
+		<th>edad</th>
+		<th>borrar</th>
+	</thead>
+	<tbody>
 	<tr th:each="persona: ${listapersonas}">
 	<td th:text="${persona.nombre}"></td>
 	<td th:text="${persona.apellidos}"></td>
 	<td th:text="${persona.edad}"></td>
+	<td ><a th:href="@{borrar(nombre=${persona.nombre})}">Borrar</a></td>
 	</tr>
+	</tbody>
 	</table>
 
 <a href="/personas/formularionuevo">ir a nuevo </a>
