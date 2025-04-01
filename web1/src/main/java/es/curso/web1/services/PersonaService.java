@@ -12,6 +12,10 @@ import es.curso.web1.repositories.PersonaRepository;
 @Service
 public class PersonaService {
 
+	// de inyeccion de dependencias 
+	// e inyectamos interfaces el tiene que decidir que
+	//implementacion 
+	
 	@Autowired
 	private PersonaRepository personaRepository;
 	

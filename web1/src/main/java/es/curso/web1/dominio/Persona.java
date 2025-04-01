@@ -6,13 +6,17 @@ import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="personas")
 public class Persona {
 	@Id
 	private String nombre;
 	private String apellidos;
 	private int edad;
+	@OneToMany(mappedBy="persona")
 	List<Examen> examenes= new ArrayList<Examen>();
 	public String getNombre() {
 		return nombre;
